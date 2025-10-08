@@ -104,6 +104,7 @@ html,body{
       <p class="bio">💻 Developer | Trader | MMO | 💕</p>
       <div class="actions">
         <a class="btn" id="cta" href="https://www.facebook.com/duc3435g" target="_blank" rel="noopener">LIÊN HỆ</a>
+        <button class="btn" id="toggleMusicBtn" aria-pressed="true">🔊 Tắt nhạc</button>
       </div>
     </section>
 
@@ -132,6 +133,12 @@ html,body{
 </audio>
 
 <script>
+// Music toggle
+const audio=document.getElementById('backgroundAudio');
+const btn=document.getElementById('toggleMusicBtn');
+(async()=>{try{await audio.play();}catch{btn.textContent='🔈 Bật nhạc';}})();
+btn.addEventListener('click',async()=>{ if(audio.paused){await audio.play(); btn.textContent='🔊 Tắt nhạc';} else { audio.pause(); btn.textContent='🔈 Bật nhạc'; }});
+
 // Toast + copy
 const toast=document.getElementById('toast');
 function showToast(text){ toast.textContent=text; toast.style.display='block'; clearTimeout(showToast.t); showToast.t=setTimeout(()=>toast.style.display='none',1500); }
